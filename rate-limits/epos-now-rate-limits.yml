@@ -1,0 +1,61 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Epos Now
+providerId: epos-now
+created: '2026-07-11'
+modified: '2026-07-11'
+reconciled: false
+tags:
+- Point of Sale
+- POS
+- Retail
+- Rate Limiting
+- Quotas
+description: >-
+  Epos Now applies account-level API request limits managed through the Web
+  Integrations area of the Back Office rather than publishing a single fixed
+  numeric per-minute rate limit in the developer documentation. The REST API
+  page in the Back Office shows the devices on the account and their usage
+  limits, and requests beyond the account allowance return an error. List
+  endpoints are paginated at up to 200 records per page via the page query
+  parameter, which is the primary control on bulk read volume. Exact numeric
+  request-rate ceilings are not published and should be confirmed against the
+  account's Web Integrations settings.
+notes: >-
+  No fixed public per-endpoint numeric rate limit is documented as of the
+  review date. The account-level request allowance is visible and managed under
+  Web Integrations in the Back Office. Clients should paginate reads (200 per
+  page), cache where possible, and back off on error responses.
+sources:
+- https://developer.eposnowhq.com/Setup/ApiDevice
+- https://developer.eposnowhq.com/Setup/APISetup
+- https://developer.eposnowhq.com/
+responseCodes:
+  throttled: 429
+limits:
+- name: Account API Requests
+  scope: account
+  metric: requests
+  limit: not published
+  notes: Account-level request allowance shown and managed under Web Integrations in the Back Office; exceeding it returns an error. No fixed public number.
+- name: List Pagination
+  scope: endpoint
+  metric: records
+  limit: 200 per page
+  notes: List endpoints return up to 200 records per page via the page query parameter.
+- name: Per-Device Access
+  scope: device
+  metric: devices
+  limit: per device license
+  notes: Each API Device consumes one of the account's device licenses and has its own credentials.
+policies:
+- name: Pagination
+  description: Iterate list endpoints with the page query parameter (up to 200 records per page) rather than requesting large result sets at once.
+- name: Backoff Strategy
+  description: Clients should implement retry with exponential backoff and jitter and honor Retry-After on throttled (429) responses.
+- name: Credential Rotation
+  description: Per-device API Key/Secret pairs can be regenerated from the Back Office if a device's credentials are compromised.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

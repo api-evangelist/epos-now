@@ -1,0 +1,265 @@
+{
+  "info": {
+    "name": "EposNow HQ REST API",
+    "description": "The EposNow HQ REST API (V2) for the Epos Now point of sale platform - products, categories, transactions (sales), customers, stock, and devices. Base https://api.eposnowhq.com/api/V2. HTTP Basic auth with a per-device access token (Base64 of API Key:API Secret).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "basic",
+    "basic": [
+      { "key": "username", "value": "{{apiKey}}", "type": "string" },
+      { "key": "password", "value": "{{apiSecret}}", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://api.eposnowhq.com/api/V2" }
+  ],
+  "item": [
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "List products",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/Product?page=1", "host": ["{{baseUrl}}"], "path": ["Product"], "query": [{ "key": "page", "value": "1" }] },
+            "description": "Returns a paginated list of products, up to 200 per page."
+          }
+        },
+        {
+          "name": "Get a product",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/Product/:Id", "host": ["{{baseUrl}}"], "path": ["Product", ":Id"], "variable": [{ "key": "Id", "value": "" }] },
+            "description": "Returns a single product by its ID."
+          }
+        },
+        {
+          "name": "Create a product",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/Product", "host": ["{{baseUrl}}"], "path": ["Product"] },
+            "description": "Creates a new product in the catalog."
+          }
+        },
+        {
+          "name": "Update a product",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/Product/:Id", "host": ["{{baseUrl}}"], "path": ["Product", ":Id"], "variable": [{ "key": "Id", "value": "" }] },
+            "description": "Updates an existing product."
+          }
+        },
+        {
+          "name": "Delete a product",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "{{baseUrl}}/Product/:Id", "host": ["{{baseUrl}}"], "path": ["Product", ":Id"], "variable": [{ "key": "Id", "value": "" }] },
+            "description": "Deletes a product from the catalog."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Categories",
+      "item": [
+        {
+          "name": "List categories",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/Category?page=1", "host": ["{{baseUrl}}"], "path": ["Category"], "query": [{ "key": "page", "value": "1" }] },
+            "description": "Returns a paginated list of categories."
+          }
+        },
+        {
+          "name": "Get a category",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/Category/:Id", "host": ["{{baseUrl}}"], "path": ["Category", ":Id"], "variable": [{ "key": "Id", "value": "" }] },
+            "description": "Returns a single category by its ID."
+          }
+        },
+        {
+          "name": "Create a category",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/Category", "host": ["{{baseUrl}}"], "path": ["Category"] },
+            "description": "Creates a new category."
+          }
+        },
+        {
+          "name": "Update a category",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/Category/:Id", "host": ["{{baseUrl}}"], "path": ["Category", ":Id"], "variable": [{ "key": "Id", "value": "" }] },
+            "description": "Updates an existing category."
+          }
+        },
+        {
+          "name": "Delete a category",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "{{baseUrl}}/Category/:Id", "host": ["{{baseUrl}}"], "path": ["Category", ":Id"], "variable": [{ "key": "Id", "value": "" }] },
+            "description": "Deletes a category."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Transactions",
+      "item": [
+        {
+          "name": "List transactions",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/Transaction?page=1", "host": ["{{baseUrl}}"], "path": ["Transaction"], "query": [{ "key": "page", "value": "1" }] },
+            "description": "Returns a paginated list of transactions (sales records)."
+          }
+        },
+        {
+          "name": "Get a transaction",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/Transaction/:Id", "host": ["{{baseUrl}}"], "path": ["Transaction", ":Id"], "variable": [{ "key": "Id", "value": "" }] },
+            "description": "Returns a single transaction by its ID."
+          }
+        },
+        {
+          "name": "Create a transaction",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/Transaction", "host": ["{{baseUrl}}"], "path": ["Transaction"] },
+            "description": "Creates a new transaction (sale) with its line items and tenders."
+          }
+        },
+        {
+          "name": "Update a transaction",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/Transaction/:Id", "host": ["{{baseUrl}}"], "path": ["Transaction", ":Id"], "variable": [{ "key": "Id", "value": "" }] },
+            "description": "Updates an existing transaction."
+          }
+        },
+        {
+          "name": "Delete a transaction",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "{{baseUrl}}/Transaction/:Id", "host": ["{{baseUrl}}"], "path": ["Transaction", ":Id"], "variable": [{ "key": "Id", "value": "" }] },
+            "description": "Deletes a transaction."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Customers",
+      "item": [
+        {
+          "name": "List customers",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/Customer?page=1", "host": ["{{baseUrl}}"], "path": ["Customer"], "query": [{ "key": "page", "value": "1" }] },
+            "description": "Returns a paginated list of customers."
+          }
+        },
+        {
+          "name": "Get a customer",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/Customer/:Id", "host": ["{{baseUrl}}"], "path": ["Customer", ":Id"], "variable": [{ "key": "Id", "value": "" }] },
+            "description": "Returns a single customer by its ID."
+          }
+        },
+        {
+          "name": "Create a customer",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/Customer", "host": ["{{baseUrl}}"], "path": ["Customer"] },
+            "description": "Creates a new customer."
+          }
+        },
+        {
+          "name": "Update a customer",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/Customer/:Id", "host": ["{{baseUrl}}"], "path": ["Customer", ":Id"], "variable": [{ "key": "Id", "value": "" }] },
+            "description": "Updates an existing customer."
+          }
+        },
+        {
+          "name": "Delete a customer",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "{{baseUrl}}/Customer/:Id", "host": ["{{baseUrl}}"], "path": ["Customer", ":Id"], "variable": [{ "key": "Id", "value": "" }] },
+            "description": "Deletes a customer."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Stock",
+      "item": [
+        {
+          "name": "List product stock levels",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/ProductStock?page=1", "host": ["{{baseUrl}}"], "path": ["ProductStock"], "query": [{ "key": "page", "value": "1" }] },
+            "description": "Returns a paginated list of product stock levels (on-hand inventory per product)."
+          }
+        },
+        {
+          "name": "List stock transfers",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/StockTransfer?page=1", "host": ["{{baseUrl}}"], "path": ["StockTransfer"], "query": [{ "key": "page", "value": "1" }] },
+            "description": "Returns a paginated list of stock transfers between locations."
+          }
+        },
+        {
+          "name": "List tax rates",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/TaxRate?page=1", "host": ["{{baseUrl}}"], "path": ["TaxRate"], "query": [{ "key": "page", "value": "1" }] },
+            "description": "Returns a paginated list of tax rates."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Devices",
+      "item": [
+        {
+          "name": "List devices",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/Device?page=1", "host": ["{{baseUrl}}"], "path": ["Device"], "query": [{ "key": "page", "value": "1" }] },
+            "description": "Returns a paginated list of the tills and API devices registered on the account."
+          }
+        },
+        {
+          "name": "Get a device",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/Device/:Id", "host": ["{{baseUrl}}"], "path": ["Device", ":Id"], "variable": [{ "key": "Id", "value": "" }] },
+            "description": "Returns a single device by its ID."
+          }
+        }
+      ]
+    }
+  ]
+}

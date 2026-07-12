@@ -1,0 +1,318 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EposNow HQ REST API",
+    "version": "V2"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{apiKey}}",
+      "password": "{{apiSecret}}"
+    }
+  },
+  "items": [
+    {
+      "info": { "name": "Products", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List products.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.eposnowhq.com/api/V2/Product?page=1",
+            "params": [
+              { "name": "page", "value": "1", "type": "query", "description": "Page number (up to 200 records per page)." }
+            ]
+          },
+          "docs": "Returns a paginated list of products, up to 200 per page."
+        },
+        {
+          "info": { "name": "Get a product.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.eposnowhq.com/api/V2/Product/:Id",
+            "params": [
+              { "name": "Id", "value": "", "type": "path", "description": "The product ID." }
+            ]
+          },
+          "docs": "Returns a single product by its ID."
+        },
+        {
+          "info": { "name": "Create a product.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.eposnowhq.com/api/V2/Product",
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Creates a new product in the catalog."
+        },
+        {
+          "info": { "name": "Update a product.", "type": "http" },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.eposnowhq.com/api/V2/Product/:Id",
+            "params": [
+              { "name": "Id", "value": "", "type": "path", "description": "The product ID." }
+            ],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Updates an existing product."
+        },
+        {
+          "info": { "name": "Delete a product.", "type": "http" },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.eposnowhq.com/api/V2/Product/:Id",
+            "params": [
+              { "name": "Id", "value": "", "type": "path", "description": "The product ID." }
+            ]
+          },
+          "docs": "Deletes a product from the catalog."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Categories", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List categories.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.eposnowhq.com/api/V2/Category?page=1",
+            "params": [
+              { "name": "page", "value": "1", "type": "query", "description": "Page number." }
+            ]
+          },
+          "docs": "Returns a paginated list of categories."
+        },
+        {
+          "info": { "name": "Get a category.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.eposnowhq.com/api/V2/Category/:Id",
+            "params": [
+              { "name": "Id", "value": "", "type": "path", "description": "The category ID." }
+            ]
+          },
+          "docs": "Returns a single category by its ID."
+        },
+        {
+          "info": { "name": "Create a category.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.eposnowhq.com/api/V2/Category",
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Creates a new category."
+        },
+        {
+          "info": { "name": "Update a category.", "type": "http" },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.eposnowhq.com/api/V2/Category/:Id",
+            "params": [
+              { "name": "Id", "value": "", "type": "path", "description": "The category ID." }
+            ],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Updates an existing category."
+        },
+        {
+          "info": { "name": "Delete a category.", "type": "http" },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.eposnowhq.com/api/V2/Category/:Id",
+            "params": [
+              { "name": "Id", "value": "", "type": "path", "description": "The category ID." }
+            ]
+          },
+          "docs": "Deletes a category."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Transactions", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List transactions.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.eposnowhq.com/api/V2/Transaction?page=1",
+            "params": [
+              { "name": "page", "value": "1", "type": "query", "description": "Page number (up to 200 records per page)." }
+            ]
+          },
+          "docs": "Returns a paginated list of transactions (sales records)."
+        },
+        {
+          "info": { "name": "Get a transaction.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.eposnowhq.com/api/V2/Transaction/:Id",
+            "params": [
+              { "name": "Id", "value": "", "type": "path", "description": "The transaction ID." }
+            ]
+          },
+          "docs": "Returns a single transaction by its ID."
+        },
+        {
+          "info": { "name": "Create a transaction.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.eposnowhq.com/api/V2/Transaction",
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Creates a new transaction (sale) with its line items and tenders."
+        },
+        {
+          "info": { "name": "Update a transaction.", "type": "http" },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.eposnowhq.com/api/V2/Transaction/:Id",
+            "params": [
+              { "name": "Id", "value": "", "type": "path", "description": "The transaction ID." }
+            ],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Updates an existing transaction."
+        },
+        {
+          "info": { "name": "Delete a transaction.", "type": "http" },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.eposnowhq.com/api/V2/Transaction/:Id",
+            "params": [
+              { "name": "Id", "value": "", "type": "path", "description": "The transaction ID." }
+            ]
+          },
+          "docs": "Deletes a transaction."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Customers", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List customers.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.eposnowhq.com/api/V2/Customer?page=1",
+            "params": [
+              { "name": "page", "value": "1", "type": "query", "description": "Page number." }
+            ]
+          },
+          "docs": "Returns a paginated list of customers."
+        },
+        {
+          "info": { "name": "Get a customer.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.eposnowhq.com/api/V2/Customer/:Id",
+            "params": [
+              { "name": "Id", "value": "", "type": "path", "description": "The customer ID." }
+            ]
+          },
+          "docs": "Returns a single customer by its ID."
+        },
+        {
+          "info": { "name": "Create a customer.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.eposnowhq.com/api/V2/Customer",
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Creates a new customer."
+        },
+        {
+          "info": { "name": "Update a customer.", "type": "http" },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.eposnowhq.com/api/V2/Customer/:Id",
+            "params": [
+              { "name": "Id", "value": "", "type": "path", "description": "The customer ID." }
+            ],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Updates an existing customer."
+        },
+        {
+          "info": { "name": "Delete a customer.", "type": "http" },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.eposnowhq.com/api/V2/Customer/:Id",
+            "params": [
+              { "name": "Id", "value": "", "type": "path", "description": "The customer ID." }
+            ]
+          },
+          "docs": "Deletes a customer."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Stock", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List product stock levels.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.eposnowhq.com/api/V2/ProductStock?page=1",
+            "params": [
+              { "name": "page", "value": "1", "type": "query", "description": "Page number." }
+            ]
+          },
+          "docs": "Returns a paginated list of product stock levels (on-hand inventory per product)."
+        },
+        {
+          "info": { "name": "List stock transfers.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.eposnowhq.com/api/V2/StockTransfer?page=1",
+            "params": [
+              { "name": "page", "value": "1", "type": "query", "description": "Page number." }
+            ]
+          },
+          "docs": "Returns a paginated list of stock transfers between locations."
+        },
+        {
+          "info": { "name": "List tax rates.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.eposnowhq.com/api/V2/TaxRate?page=1",
+            "params": [
+              { "name": "page", "value": "1", "type": "query", "description": "Page number." }
+            ]
+          },
+          "docs": "Returns a paginated list of tax rates."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Devices", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List devices.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.eposnowhq.com/api/V2/Device?page=1",
+            "params": [
+              { "name": "page", "value": "1", "type": "query", "description": "Page number." }
+            ]
+          },
+          "docs": "Returns a paginated list of the tills and API devices registered on the account."
+        },
+        {
+          "info": { "name": "Get a device.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.eposnowhq.com/api/V2/Device/:Id",
+            "params": [
+              { "name": "Id", "value": "", "type": "path", "description": "The device ID." }
+            ]
+          },
+          "docs": "Returns a single device by its ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

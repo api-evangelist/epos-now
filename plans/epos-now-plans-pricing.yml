@@ -1,0 +1,134 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Epos Now
+providerId: epos-now
+created: '2026-07-11'
+modified: '2026-07-11'
+reconciled: false
+tags:
+- Point of Sale
+- POS
+- Retail
+- Hospitality
+- Payments
+- Plans
+description: >-
+  Epos Now is sold as a commercial point of sale subscription, not as a metered
+  API product. Businesses buy a per-till software subscription (optionally
+  bundled with countertop or mobile hardware) plus optional payment processing
+  and premium support. The REST API is included with a subscription and is
+  enabled per registered API Device from the Back Office, provisioned via the
+  Epos Now AppStore - each API Device consumes one of the account's device
+  licenses. There is no separate published price for API calls. The figures
+  below are indicative published/third-party review numbers and vary by region
+  (UK vs US), promotion, contract length, and hardware bundle; treat them as
+  unconfirmed until reconciled against a current Epos Now quote.
+notes: >-
+  Pricing is region-specific and frequently promotional. US software has been
+  advertised around 39 USD per till per month (or paid up front for an annual
+  term); complete hardware-plus-software bundles around 349 USD up front plus
+  the monthly software fee; premium 24/7 support around 79 USD per month; Epos
+  Now Payments card processing around 2.6 percent plus a per-transaction fee. UK
+  software has been advertised around 25 to 39 GBP per month with hardware
+  bundles from a few hundred GBP and lower flat card-processing rates. Contracts
+  of 24 to 36 months are commonly reported. Verify all numbers directly with
+  Epos Now.
+sources:
+- https://www.eposnow.com/
+- https://www.eposnow.com/us/store/software/apps/api/
+- https://developer.eposnowhq.com/Setup/ApiDevice
+plans:
+- id: epos-now-software
+  name: Software Subscription (per till)
+  type: paid
+  description: >-
+    Per-till cloud POS software subscription including the Back Office,
+    reporting, inventory, and the EposNow HQ REST API. Billed monthly per till,
+    or up front for an annual term. Indicative pricing around 39 USD per month
+    (approximately 25 to 39 GBP per month in the UK).
+  entries:
+  - label: Per-Till Software
+    name: per_till_software
+    type: recurring
+    metric: till
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: approximately 39 USD per till per month (region-dependent; unconfirmed)
+    userMultiplied: true
+  elements:
+  - name: Cloud Back Office
+  - name: Reporting and Analytics
+  - name: Inventory and Stock Control
+  - name: REST API Access (per API Device)
+  - name: Webhooks
+- id: epos-now-complete
+  name: Complete Solution (hardware + software)
+  type: paid
+  description: >-
+    Hardware-plus-software bundle pairing a countertop or mobile till (terminal,
+    cash drawer, receipt printer) with the per-till software subscription.
+    Indicative bundle around 349 USD up front plus the monthly software fee;
+    hardware pricing varies widely by promotion and region.
+  entries:
+  - label: Hardware Bundle
+    name: hardware_bundle
+    type: one-time
+    metric: bundle
+    limit: -1
+    timeFrame: lifetime
+    geo: global
+    unit: 1
+    price: approximately 349 USD up front plus monthly software (region-dependent; unconfirmed)
+    userMultiplied: false
+  elements:
+  - name: Till Hardware
+  - name: Cash Drawer and Receipt Printer
+  - name: Cloud Back Office
+  - name: REST API Access (per API Device)
+- id: epos-now-payments
+  name: Epos Now Payments (card processing)
+  type: usage
+  description: >-
+    Optional integrated card payment processing. Billed as a percentage of each
+    transaction (plus a possible per-transaction fee), separate from the
+    software subscription. Rates vary by region and card type.
+  entries:
+  - label: Card Processing
+    name: card_processing
+    type: usage
+    metric: transaction
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: percentage per transaction (approximately 2.6 percent plus a per-transaction fee in the US; lower flat rates in the UK; unconfirmed)
+    userMultiplied: false
+  elements:
+  - name: Integrated Payments
+  - name: Next-Day Settlement
+- id: epos-now-premium-support
+  name: Premium Support
+  type: paid
+  description: >-
+    Optional 24/7 phone and chat support add-on, billed monthly on top of the
+    software subscription. Indicative pricing around 79 USD per month.
+  entries:
+  - label: Premium Support
+    name: premium_support
+    type: recurring
+    metric: account
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: approximately 79 USD per month (unconfirmed)
+    userMultiplied: false
+  elements:
+  - name: 24/7 Phone Support
+  - name: 24/7 Chat Support
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

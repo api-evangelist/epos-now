@@ -1,0 +1,121 @@
+aid: epos-now
+name: Epos Now
+review:
+  question: Does Epos Now expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-11'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. Epos Now's own public surface is the
+    EposNow HQ REST API (request/response over HTTPS) plus Webhooks. Webhooks
+    are outbound HTTP POST notifications that Epos Now sends to a consumer-defined
+    endpoint when an object changes; they are not a bidirectional or streaming
+    WebSocket transport. There is no documented ws:// or wss:// endpoint on Epos
+    Now's API to model, so no AsyncAPI was created.
+findings:
+  summary: |
+    Epos Now does not publish a documented public WebSocket API. Epos Now is a
+    cloud point of sale (POS) platform for retail and hospitality. Its public
+    developer surface is the EposNow HQ REST API, base
+    https://api.eposnowhq.com/api/V2 (with a newer V4 / "Global" API at
+    https://api.eposnowhq.com/api/v4), authenticated with per-device HTTP Basic
+    auth. The API is pure request/response REST over HTTPS covering Products,
+    Categories, Transactions (sales), Customers, Stock, Tax rates, and Devices.
+    For push-style notifications, Epos Now offers Webhooks - outbound HTTP POST
+    callbacks to a consumer-configured URL, tagged with Epos-Object and
+    Epos-Action headers - not a WebSocket. No realtime, bidirectional, or
+    streaming WebSocket (ws:// or wss://) endpoint is documented on Epos Now's
+    own API as of the review date.
+  openSource: |
+    Epos Now is a proprietary, closed-source commercial SaaS platform. There is
+    no open-source server or self-hostable engine; the API is a hosted cloud
+    service. API access is enabled per registered API Device from the Back
+    Office (each device consumes a device license) and is provisioned through
+    the Epos Now AppStore rather than as a standalone, separately metered API
+    product.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.eposnowhq.com/api/V2
+      documented: true
+      note: EposNow HQ REST API (V2). Newer V4 / Global API at https://api.eposnowhq.com/api/v4. Per-device HTTP Basic auth.
+    - protocol: Webhook
+      scheme: https
+      documented: true
+      note: Outbound HTTP POST notifications to a consumer-configured endpoint, tagged with Epos-Object and Epos-Action headers. Server-to-endpoint HTTP, not WebSocket.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented anywhere in the EposNow HQ API reference as of the review date.
+  endpointsConfirmedRest:
+    - GET    https://api.eposnowhq.com/api/V2/Product?page={pageNumber}
+    - GET    https://api.eposnowhq.com/api/V2/Product/{Id}
+    - POST   https://api.eposnowhq.com/api/V2/Product
+    - PUT    https://api.eposnowhq.com/api/V2/Product/{Id}
+    - DELETE https://api.eposnowhq.com/api/V2/Product/{Id}
+    - GET    https://api.eposnowhq.com/api/V2/Category?page={pageNumber}
+    - GET    https://api.eposnowhq.com/api/V2/Category/{Id}
+    - POST   https://api.eposnowhq.com/api/V2/Category
+    - PUT    https://api.eposnowhq.com/api/V2/Category/{Id}
+    - DELETE https://api.eposnowhq.com/api/V2/Category/{Id}
+    - GET    https://api.eposnowhq.com/api/V2/Transaction?page={pageNumber}
+    - GET    https://api.eposnowhq.com/api/V2/Transaction/{Id}
+    - POST   https://api.eposnowhq.com/api/V2/Transaction
+    - PUT    https://api.eposnowhq.com/api/V2/Transaction/{Id}
+    - DELETE https://api.eposnowhq.com/api/V2/Transaction/{Id}
+    - GET    https://api.eposnowhq.com/api/V2/Customer?page={pageNumber}
+    - GET    https://api.eposnowhq.com/api/V2/Customer/{Id}
+    - POST   https://api.eposnowhq.com/api/V2/Customer
+    - PUT    https://api.eposnowhq.com/api/V2/Customer/{Id}
+    - DELETE https://api.eposnowhq.com/api/V2/Customer/{Id}
+    - GET    https://api.eposnowhq.com/api/V2/ProductStock?page={pageNumber}
+    - GET    https://api.eposnowhq.com/api/V2/StockTransfer?page={pageNumber}
+    - GET    https://api.eposnowhq.com/api/V2/TaxRate?page={pageNumber}
+    - GET    https://api.eposnowhq.com/api/V2/Device?page={pageNumber}
+    - GET    https://api.eposnowhq.com/api/V2/Device/{Id}
+  endpointsModeled:
+    - note: The V2 resources are documented as deprecated in favor of the V4 / "Global" API (https://api.eposnowhq.com/api/v4), which reorganizes the same domains (Product, Customer, Stock, Transaction, Staff, plus Other - devices, webhooks, table plans, end-of-day). Exact V4 paths and per-resource stock write operations were not fully enumerated in public docs and are modeled at the domain level rather than endpoint level.
+  authentication: |
+    HTTP Basic auth. The access token is the Base64 encoding of "API Key:API
+    Secret" (key, a colon, secret, no spaces), sent as
+    "Authorization: Basic {token}". Credentials are issued per API Device
+    registered under Web Integrations in the Epos Now Back Office; each device
+    has its own key/secret pair and can be regenerated.
+sources:
+  - url: https://developer.eposnowhq.com/
+    type: Documentation
+    note: EposNow HQ REST API developer portal home. V2 and V4 (Global) documentation.
+  - url: https://developer.eposnowhq.com/Docs/Authentication
+    type: Documentation
+    note: Basic auth; Base64(API Key:API Secret) as Authorization Basic token. Per-device credentials.
+  - url: https://developer.eposnowhq.com/Setup/ApiDevice
+    type: Documentation
+    note: Registering an API Device under Web Integrations in the Back Office; key/secret and regenerate.
+  - url: https://developer.eposnowhq.com/Docs/Api?endpoint=Product
+    type: APIReference
+    note: Product CRUD under /api/V2/Product. Marked deprecated in favor of V4.
+  - url: https://developer.eposnowhq.com/Docs/Api?endpoint=Transaction
+    type: APIReference
+    note: Transaction (sales record) CRUD under /api/V2/Transaction, 200 per page.
+  - url: https://developer.eposnowhq.com/Docs/Api?endpoint=Customer
+    type: APIReference
+    note: Customer CRUD under /api/V2/Customer.
+  - url: https://developer.eposnowhq.com/Docs/Api?endpoint=Category
+    type: APIReference
+    note: Category CRUD under /api/V2/Category.
+  - url: https://developer.eposnowhq.com/Docs/Api?endpoint=Device
+    type: APIReference
+    note: Device listing under /api/V2/Device.
+  - url: https://developer.eposnowhq.com/Docs/Webhooks
+    type: Documentation
+    note: Webhooks are outbound HTTP POST notifications with Epos-Object and Epos-Action headers. Not a WebSocket.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists. Epos Now's own public API is
+    request/response REST (EposNow HQ REST API) plus outbound Webhooks. No
+    AsyncAPI document was created because there is no server-push WebSocket or
+    streaming transport on Epos Now's API to model; the only push mechanism is
+    outbound HTTP webhook callbacks.

@@ -1,0 +1,23 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/epos-now-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: >-
+    HTTP Basic authentication. The access token is the Base64 encoding of the
+    string "API Key:API Secret" (the API Key, a colon character, then the API
+    Secret, with no spaces). It is sent as the header
+    "Authorization: Basic {token}", alongside a Content-Type header such as
+    application/json. Credentials are issued per API Device registered under
+    Web Integrations in the Epos Now Back Office; each device has its own
+    key/secret pair and can be regenerated, and the token differs for every
+    registered device.
+  sources:
+  - openapi/epos-now-openapi.yml
+  - https://developer.eposnowhq.com/Docs/Authentication
+  - https://developer.eposnowhq.com/Setup/ApiDevice
