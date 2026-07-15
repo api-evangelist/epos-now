@@ -168,6 +168,8 @@ apis:
     to your endpoint whenever a relevant object changes, carrying Epos-Object and
     Epos-Action headers describing what happened.
 common:
+- type: AgenticAccess
+  url: agentic-access/epos-now-agentic-access.yml
 - type: Authentication
   url: authentication/epos-now-authentication.yml
 - type: LinkedIn
