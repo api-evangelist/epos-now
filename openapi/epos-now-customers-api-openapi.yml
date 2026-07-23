@@ -1,0 +1,156 @@
+openapi: 3.0.3
+info:
+  title: EposNow HQ REST Categories Customers API
+  description: The EposNow HQ REST API lets developers programmatically interact with the cloud-based aspects of the Epos Now point of sale (POS) platform for retail and hospitality - products, categories, transactions (sales), customers, stock, tax rates, and devices. This document models the documented V2 API surface (base https://api.eposnowhq.com/api/V2). Epos Now recommends the newer V4 / "Global" API (https://api.eposnowhq.com/api/v4) for new integrations, which reorganizes the same domains; V4 per-resource paths are not fully enumerated here. All requests use HTTP Basic authentication with a per-device access token (Base64 of "API Key:API Secret") issued from the Back Office. List endpoints are paginated at up to 200 records per page via the page query parameter.
+  version: V2
+  contact:
+    name: Epos Now Developers
+    url: https://developer.eposnowhq.com/
+servers:
+- url: https://api.eposnowhq.com/api/V2
+  description: EposNow HQ REST API (V2)
+security:
+- basicAuth: []
+tags:
+- name: Customers
+  description: Customer records for loyalty, accounts, and CRM.
+paths:
+  /Customer:
+    get:
+      operationId: listCustomers
+      tags:
+      - Customers
+      summary: List customers
+      description: Returns a paginated list of customers, up to 200 per page.
+      parameters:
+      - $ref: '#/components/parameters/Page'
+      responses:
+        '200':
+          description: A paginated list of customers.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createCustomer
+      tags:
+      - Customers
+      summary: Create a customer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '200':
+          description: The created customer.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /Customer/{Id}:
+    parameters:
+    - $ref: '#/components/parameters/Id'
+    get:
+      operationId: getCustomer
+      tags:
+      - Customers
+      summary: Get a customer
+      responses:
+        '200':
+          description: The requested customer.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateCustomer
+      tags:
+      - Customers
+      summary: Update a customer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '200':
+          description: The updated customer.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteCustomer
+      tags:
+      - Customers
+      summary: Delete a customer
+      responses:
+        '200':
+          description: Deletion confirmation.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Unauthorized:
+      description: Missing or invalid Basic authentication credentials.
+    NotFound:
+      description: The requested resource was not found.
+  schemas:
+    Customer:
+      type: object
+      properties:
+        Id:
+          type: integer
+        Title:
+          type: string
+        Forename:
+          type: string
+        Surname:
+          type: string
+        EmailAddress:
+          type: string
+        PhoneNumber:
+          type: string
+        CustomerTypeId:
+          type: integer
+      additionalProperties: true
+  parameters:
+    Id:
+      name: Id
+      in: path
+      required: true
+      description: The unique identifier of the resource.
+      schema:
+        type: integer
+    Page:
+      name: page
+      in: query
+      required: false
+      description: The page number of results to return (up to 200 records per page).
+      schema:
+        type: integer
+        default: 1
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: 'HTTP Basic authentication. The access token is the Base64 encoding of "API Key:API Secret" (the API Key, a colon, then the API Secret, with no spaces), sent as "Authorization: Basic {token}". Credentials are issued per API Device registered under Web Integrations in the Epos Now Back Office.'
