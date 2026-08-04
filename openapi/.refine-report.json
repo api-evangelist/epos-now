@@ -1,0 +1,24 @@
+{
+  "provider": "epos-now",
+  "sources": [
+    "epos-now-categories-api-openapi.yml",
+    "epos-now-customers-api-openapi.yml",
+    "epos-now-devices-api-openapi.yml",
+    "epos-now-products-api-openapi.yml",
+    "epos-now-stock-api-openapi.yml",
+    "epos-now-transactions-api-openapi.yml"
+  ],
+  "outputs": [
+    "epos-now-categories-api-openapi.yml",
+    "epos-now-customers-api-openapi.yml",
+    "epos-now-devices-api-openapi.yml",
+    "epos-now-products-api-openapi.yml",
+    "epos-now-stock-api-openapi.yml",
+    "epos-now-transactions-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
