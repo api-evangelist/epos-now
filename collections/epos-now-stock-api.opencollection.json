@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EposNow HQ REST Categories Stock API",
+    "version": "V2"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stock",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List product stock levels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.eposnowhq.com/api/V2/ProductStock",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number of results to return (up to 200 records per page)."
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of product stock levels, up to 200 per page. Used to read on-hand inventory per product."
+        },
+        {
+          "info": {
+            "name": "List stock transfers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.eposnowhq.com/api/V2/StockTransfer",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number of results to return (up to 200 records per page)."
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of stock transfers between locations, up to 200 per page."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

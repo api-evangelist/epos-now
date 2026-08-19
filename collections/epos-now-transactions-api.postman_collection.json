@@ -1,0 +1,919 @@
+{
+  "item": [
+    {
+      "id": "6bbfaba7-ca56-4331-9168-6a941f117ba6",
+      "name": "Transactions",
+      "description": {
+        "content": "Sales records (orders) captured at the point of sale.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1c32aca9-5d16-40c2-aac9-6824f42be082",
+          "name": "List transactions",
+          "request": {
+            "name": "List transactions",
+            "description": {
+              "content": "Returns a paginated list of transactions (sales records), up to 200 per page.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Transaction"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "The page number of results to return (up to 200 records per page)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3127078c-50cb-4184-9e3c-9b8f0cb74044",
+              "name": "A paginated list of transactions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Transaction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Id\": 2004,\n    \"DeviceId\": 4808,\n    \"CustomerId\": 6083,\n    \"DateTime\": \"1967-11-11T06:33:39.706Z\",\n    \"Amount\": 7883.314919887781,\n    \"TransactionItems\": [\n      {\n        \"key_0\": 5465.931844523616,\n        \"key_1\": 7894.987756262935,\n        \"key_2\": false\n      },\n      {\n        \"key_0\": false\n      }\n    ]\n  },\n  {\n    \"Id\": 1587,\n    \"DeviceId\": 9427,\n    \"CustomerId\": 7469,\n    \"DateTime\": \"1997-11-13T12:40:45.719Z\",\n    \"Amount\": 6194.71520153456,\n    \"TransactionItems\": [\n      {\n        \"key_0\": false,\n        \"key_1\": false\n      },\n      {\n        \"key_0\": false,\n        \"key_1\": 8953\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b71990f0-11ec-4b72-8498-9109e9b27c0a",
+              "name": "Missing or invalid Basic authentication credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Transaction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8cfb1b5b-1e3f-4631-ac68-8436dccc817c",
+          "name": "Create a transaction",
+          "request": {
+            "name": "Create a transaction",
+            "description": {
+              "content": "Creates a new transaction (sale) with its line items and tenders.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Transaction"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Id\": \"<integer>\",\n  \"DeviceId\": \"<integer>\",\n  \"CustomerId\": \"<integer>\",\n  \"DateTime\": \"<dateTime>\",\n  \"Amount\": \"<number>\",\n  \"TransactionItems\": [\n    {\n      \"key_0\": 8626.39446458955,\n      \"key_1\": \"string\"\n    },\n    {\n      \"key_0\": 8501,\n      \"key_1\": 1824.1486909992311\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4d8e9a9d-840f-4bd8-ba28-bbe8e2ad6ab9",
+              "name": "The created transaction.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Transaction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Id\": \"<integer>\",\n  \"DeviceId\": \"<integer>\",\n  \"CustomerId\": \"<integer>\",\n  \"DateTime\": \"<dateTime>\",\n  \"Amount\": \"<number>\",\n  \"TransactionItems\": [\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 7989.590135052892\n    },\n    {\n      \"key_0\": 8886.536641309956,\n      \"key_1\": 9533.171089607607\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": \"<integer>\",\n  \"DeviceId\": \"<integer>\",\n  \"CustomerId\": \"<integer>\",\n  \"DateTime\": \"<dateTime>\",\n  \"Amount\": \"<number>\",\n  \"TransactionItems\": [\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 7989.590135052892\n    },\n    {\n      \"key_0\": 8886.536641309956,\n      \"key_1\": 9533.171089607607\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2b616d0b-1673-4bfc-9080-53ae8f22449d",
+              "name": "Missing or invalid Basic authentication credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Transaction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Id\": \"<integer>\",\n  \"DeviceId\": \"<integer>\",\n  \"CustomerId\": \"<integer>\",\n  \"DateTime\": \"<dateTime>\",\n  \"Amount\": \"<number>\",\n  \"TransactionItems\": [\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 7989.590135052892\n    },\n    {\n      \"key_0\": 8886.536641309956,\n      \"key_1\": 9533.171089607607\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "49f6f544-6635-4efd-a402-8151b0dbacac",
+          "name": "Get a transaction",
+          "request": {
+            "name": "Get a transaction",
+            "description": {},
+            "url": {
+              "path": [
+                "Transaction",
+                ":Id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "Id",
+                  "description": "(Required) The unique identifier of the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "754aad83-c988-4a27-a206-8c8ff1724bfc",
+              "name": "The requested transaction.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Transaction",
+                    ":Id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "Id",
+                      "description": "(Required) The unique identifier of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": \"<integer>\",\n  \"DeviceId\": \"<integer>\",\n  \"CustomerId\": \"<integer>\",\n  \"DateTime\": \"<dateTime>\",\n  \"Amount\": \"<number>\",\n  \"TransactionItems\": [\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 7989.590135052892\n    },\n    {\n      \"key_0\": 8886.536641309956,\n      \"key_1\": 9533.171089607607\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1013a794-6664-4845-908b-ca5667b9462f",
+              "name": "Missing or invalid Basic authentication credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Transaction",
+                    ":Id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "Id",
+                      "description": "(Required) The unique identifier of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fec85241-a19f-4a56-a474-98d0d23ba656",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Transaction",
+                    ":Id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "Id",
+                      "description": "(Required) The unique identifier of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fd184627-aeaf-4730-b406-1aebdf46fdbc",
+          "name": "Update a transaction",
+          "request": {
+            "name": "Update a transaction",
+            "description": {},
+            "url": {
+              "path": [
+                "Transaction",
+                ":Id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "Id",
+                  "description": "(Required) The unique identifier of the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Id\": \"<integer>\",\n  \"DeviceId\": \"<integer>\",\n  \"CustomerId\": \"<integer>\",\n  \"DateTime\": \"<dateTime>\",\n  \"Amount\": \"<number>\",\n  \"TransactionItems\": [\n    {\n      \"key_0\": 8626.39446458955,\n      \"key_1\": \"string\"\n    },\n    {\n      \"key_0\": 8501,\n      \"key_1\": 1824.1486909992311\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "34b2af60-7719-46a0-a4df-ea4fe07072ad",
+              "name": "The updated transaction.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Transaction",
+                    ":Id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "Id",
+                      "description": "(Required) The unique identifier of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Id\": \"<integer>\",\n  \"DeviceId\": \"<integer>\",\n  \"CustomerId\": \"<integer>\",\n  \"DateTime\": \"<dateTime>\",\n  \"Amount\": \"<number>\",\n  \"TransactionItems\": [\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 7989.590135052892\n    },\n    {\n      \"key_0\": 8886.536641309956,\n      \"key_1\": 9533.171089607607\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": \"<integer>\",\n  \"DeviceId\": \"<integer>\",\n  \"CustomerId\": \"<integer>\",\n  \"DateTime\": \"<dateTime>\",\n  \"Amount\": \"<number>\",\n  \"TransactionItems\": [\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 7989.590135052892\n    },\n    {\n      \"key_0\": 8886.536641309956,\n      \"key_1\": 9533.171089607607\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9624e4b8-efd5-45fe-b6a2-6e9799cf8c1d",
+              "name": "Missing or invalid Basic authentication credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Transaction",
+                    ":Id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "Id",
+                      "description": "(Required) The unique identifier of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Id\": \"<integer>\",\n  \"DeviceId\": \"<integer>\",\n  \"CustomerId\": \"<integer>\",\n  \"DateTime\": \"<dateTime>\",\n  \"Amount\": \"<number>\",\n  \"TransactionItems\": [\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 7989.590135052892\n    },\n    {\n      \"key_0\": 8886.536641309956,\n      \"key_1\": 9533.171089607607\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2d1dfd50-5d8e-41c5-be80-31965ecbd400",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Transaction",
+                    ":Id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "Id",
+                      "description": "(Required) The unique identifier of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Id\": \"<integer>\",\n  \"DeviceId\": \"<integer>\",\n  \"CustomerId\": \"<integer>\",\n  \"DateTime\": \"<dateTime>\",\n  \"Amount\": \"<number>\",\n  \"TransactionItems\": [\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 7989.590135052892\n    },\n    {\n      \"key_0\": 8886.536641309956,\n      \"key_1\": 9533.171089607607\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d8eebd1b-5366-4479-aea1-75b61f0dcf23",
+          "name": "Delete a transaction",
+          "request": {
+            "name": "Delete a transaction",
+            "description": {},
+            "url": {
+              "path": [
+                "Transaction",
+                ":Id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "Id",
+                  "description": "(Required) The unique identifier of the resource."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3d7d7976-dbf1-4481-96ec-390ee4c8fd3f",
+              "name": "Deletion confirmation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Transaction",
+                    ":Id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "Id",
+                      "description": "(Required) The unique identifier of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6b036690-75dd-49fa-a344-0f322c1ec646",
+              "name": "Missing or invalid Basic authentication credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Transaction",
+                    ":Id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "Id",
+                      "description": "(Required) The unique identifier of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cb41c754-5d09-4620-a4d6-c6a3fb6ffc36",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Transaction",
+                    ":Id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "Id",
+                      "description": "(Required) The unique identifier of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.eposnowhq.com/api/V2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d67db778-726f-4e52-b6c4-d8377596b132",
+    "name": "EposNow HQ REST Categories Transactions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The EposNow HQ REST API lets developers programmatically interact with the cloud-based aspects of the Epos Now point of sale (POS) platform for retail and hospitality - products, categories, transactions (sales), customers, stock, tax rates, and devices. This document models the documented V2 API surface (base https://api.eposnowhq.com/api/V2). Epos Now recommends the newer V4 / \"Global\" API (https://api.eposnowhq.com/api/v4) for new integrations, which reorganizes the same domains; V4 per-resource paths are not fully enumerated here. All requests use HTTP Basic authentication with a per-device access token (Base64 of \"API Key:API Secret\") issued from the Back Office. List endpoints are paginated at up to 200 records per page via the page query parameter.\n\nContact Support:\n Name: Epos Now Developers",
+      "type": "text/plain"
+    }
+  }
+}

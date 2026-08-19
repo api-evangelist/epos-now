@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EposNow HQ REST Categories Devices API",
+    "version": "V2"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.eposnowhq.com/api/V2/Device",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number of results to return (up to 200 records per page)."
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of the tills and API devices registered on the account, up to 200 per page."
+        },
+        {
+          "info": {
+            "name": "Get a device",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.eposnowhq.com/api/V2/Device/:Id",
+            "params": [
+              {
+                "name": "Id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource."
+              }
+            ]
+          },
+          "docs": "Get a device"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

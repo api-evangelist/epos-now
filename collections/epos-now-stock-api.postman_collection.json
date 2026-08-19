@@ -1,0 +1,313 @@
+{
+  "item": [
+    {
+      "id": "7d8a5289-8d6c-4a43-8b5e-b36fe59f2ad1",
+      "name": "Stock",
+      "description": {
+        "content": "Product stock levels and stock control.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6322af9d-8a41-4895-97b4-07a74b0e06e5",
+          "name": "List product stock levels",
+          "request": {
+            "name": "List product stock levels",
+            "description": {
+              "content": "Returns a paginated list of product stock levels, up to 200 per page. Used to read on-hand inventory per product.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ProductStock"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "The page number of results to return (up to 200 records per page)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "07ec35b6-8589-4e9a-bb2d-edf648d5c6d3",
+              "name": "A paginated list of product stock levels.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ProductStock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"ProductId\": 4384,\n    \"LocationId\": 1192,\n    \"CurrentStock\": 2019.4891128363058\n  },\n  {\n    \"ProductId\": 8034,\n    \"LocationId\": 5974,\n    \"CurrentStock\": 4039.2536901013686,\n    \"key_0\": 6726,\n    \"key_1\": \"string\",\n    \"key_2\": true\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8a2ca77d-7c1a-4cd1-be78-ce550fddd3ab",
+              "name": "Missing or invalid Basic authentication credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ProductStock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "703ba345-66dd-4e80-95b0-1ea1f069e7a0",
+          "name": "List stock transfers",
+          "request": {
+            "name": "List stock transfers",
+            "description": {
+              "content": "Returns a paginated list of stock transfers between locations, up to 200 per page.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "StockTransfer"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "The page number of results to return (up to 200 records per page)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c5970434-4732-4366-88d2-4356425bd2e3",
+              "name": "A paginated list of stock transfers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "StockTransfer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"key_0\": 9247.776421855775\n  },\n  {\n    \"key_0\": 9693.715249929728,\n    \"key_1\": 8335,\n    \"key_2\": 6632.317470672202,\n    \"key_3\": 1301\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5b0033d7-f23a-43ad-beb4-09c770e2beb6",
+              "name": "Missing or invalid Basic authentication credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "StockTransfer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.eposnowhq.com/api/V2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a81fb458-c391-4038-b91c-09b90f48e259",
+    "name": "EposNow HQ REST Categories Stock API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The EposNow HQ REST API lets developers programmatically interact with the cloud-based aspects of the Epos Now point of sale (POS) platform for retail and hospitality - products, categories, transactions (sales), customers, stock, tax rates, and devices. This document models the documented V2 API surface (base https://api.eposnowhq.com/api/V2). Epos Now recommends the newer V4 / \"Global\" API (https://api.eposnowhq.com/api/v4) for new integrations, which reorganizes the same domains; V4 per-resource paths are not fully enumerated here. All requests use HTTP Basic authentication with a per-device access token (Base64 of \"API Key:API Secret\") issued from the Back Office. List endpoints are paginated at up to 200 records per page via the page query parameter.\n\nContact Support:\n Name: Epos Now Developers",
+      "type": "text/plain"
+    }
+  }
+}
