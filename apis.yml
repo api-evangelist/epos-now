@@ -26,6 +26,14 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/epos-now.png
 tags:
+- Point-of-Sale
+- Retail
+- Hospitality
+- Payments
+- Inventory
+- Commerce
+- E-Commerce
+tags_raw:
 - Point of Sale
 - POS
 - Retail
@@ -140,6 +148,8 @@ apis:
   humanURL: https://developer.eposnowhq.com/Docs/Api?endpoint=Product
   baseURL: https://api.eposnowhq.com/api/V2
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
@@ -204,6 +214,8 @@ apis:
   humanURL: https://developer.eposnowhq.com/Docs/Api?endpoint=Product
   baseURL: https://api.eposnowhq.com/api/V2
   tags:
+  - Transaction
+  tags_raw:
   - Transactions
   properties:
   - type: OpenAPI
