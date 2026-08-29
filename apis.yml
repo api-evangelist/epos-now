@@ -255,6 +255,9 @@ apis:
   - type: APIReference
     url: https://developer.eposnowhq.com/Docs/Api?endpoint=Device
 common:
+- type: CapabilityMap
+  url: capabilities/epos-now-capability-edges.yml
+  name: Epos Now Business Capability Map
 - type: AgenticAccess
   url: agentic-access/epos-now-agentic-access.yml
 - type: Authentication
