@@ -11,6 +11,18 @@ description: Epos Now is a cloud-based point of sale (POS) platform for retail a
   Webhooks for event notifications. API access is enabled per registered API
   Device from the Back Office and is available through the Epos Now AppStore
   rather than sold as a standalone metered API product.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
