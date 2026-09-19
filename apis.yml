@@ -194,6 +194,8 @@ apis:
   humanURL: https://developer.eposnowhq.com/Docs/Api?endpoint=Product
   baseURL: https://api.eposnowhq.com/api/V2
   tags:
+  - Stocks
+  tags_raw:
   - Stock
   properties:
   - type: OpenAPI
