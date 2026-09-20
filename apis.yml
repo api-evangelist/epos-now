@@ -257,6 +257,8 @@ apis:
   - type: APIReference
     url: https://developer.eposnowhq.com/Docs/Api?endpoint=Device
 common:
+- type: Pricing
+  url: https://www.eposnow.com/us/pricing/
 - type: CapabilityMap
   url: capabilities/epos-now-capability-edges.yml
   name: Epos Now Business Capability Map
