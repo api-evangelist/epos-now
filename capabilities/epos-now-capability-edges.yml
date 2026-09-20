@@ -11,8 +11,21 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 2
+edge_count: 4
 edges:
+- tag: Transactions
+  spec_file: epos-now-transactions-api-openapi.yml
+  capability_id: BC-2320.10
+  capability_id_l1: BC-2320
+  capability_name: Sales Transaction Management
+  confidence: 0.85
+  evidence: GET /Transaction  listTransactions; POST /Transaction  createTransaction  Create a transaction;
+    schema Transaction — "transactions (sales)" on "the Epos Now point of sale (POS) platform for retail
+    and hospitality"
+  reason: The vendor explicitly glosses transactions as sales on a point-of-sale platform, so creating
+    and reading transactions is capture of consumer sales transactions at the till. Sales Transaction
+    Management is the clear fit; not a payments or accounting capability.
+  recovered_from: vertical-retail-consumer-goods-edges.json
 - tag: Customers
   spec_file: epos-now-customers-api-openapi.yml
   capability_id: BC-420.10
@@ -33,3 +46,15 @@ edges:
   reason: Operations expose stock levels per product and stock transfer records — inventory management.
     Left at L1 because the surface spans both stock levels and inter-location transfers rather than naming
     a single sub-capability.
+- tag: Products
+  spec_file: epos-now-products-api-openapi.yml
+  capability_id: BC-2370.10
+  capability_id_l1: BC-2370
+  capability_name: Item Master Data Management
+  confidence: 0.75
+  evidence: GET /Product  listProducts; POST /Product  createProduct  Create a product; PUT /Product/{Id}  updateProduct;
+    GET /TaxRate  listTaxRates  List tax rates; schema Product
+  reason: Full CRUD over the canonical product records in the retailer's POS back office, the authoritative
+    item record used for selling. Item Master Data Management fits; the tax-rate list is a supporting
+    attribute lookup rather than a tax capability.
+  recovered_from: vertical-retail-consumer-goods-edges.json
