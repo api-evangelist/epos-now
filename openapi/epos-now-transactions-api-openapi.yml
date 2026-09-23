@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: EposNow HQ REST Categories Transactions API
-  description: The EposNow HQ REST API lets developers programmatically interact with the cloud-based aspects of the Epos Now point of sale (POS) platform for retail and hospitality - products, categories, transactions (sales), customers, stock, tax rates, and devices. This document models the documented V2 API surface (base https://api.eposnowhq.com/api/V2). Epos Now recommends the newer V4 / "Global" API (https://api.eposnowhq.com/api/v4) for new integrations, which reorganizes the same domains; V4 per-resource paths are not fully enumerated here. All requests use HTTP Basic authentication with a per-device access token (Base64 of "API Key:API Secret") issued from the Back Office. List endpoints are paginated at up to 200 records per page via the page query parameter.
+  title: EposNow HQ REST Transactions API
+  description: The EposNow HQ REST API lets developers programmatically interact with the cloud-based aspects of the Epos Now point of sale (POS) platform for retail and hospitality - products, categories, transactions (sales), customers, stock, tax rates, and devices.
   version: V2
   contact:
     name: Epos Now Developers
@@ -111,10 +111,10 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
-    Unauthorized:
-      description: Missing or invalid Basic authentication credentials.
     NotFound:
       description: The requested resource was not found.
+    Unauthorized:
+      description: Missing or invalid Basic authentication credentials.
   parameters:
     Id:
       name: Id

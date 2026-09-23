@@ -1,12 +1,7 @@
 {
   "provider": "epos-now",
   "sources": [
-    "epos-now-categories-api-openapi.yml",
-    "epos-now-customers-api-openapi.yml",
-    "epos-now-devices-api-openapi.yml",
-    "epos-now-products-api-openapi.yml",
-    "epos-now-stock-api-openapi.yml",
-    "epos-now-transactions-api-openapi.yml"
+    "_original/epos-now-openapi.yml"
   ],
   "outputs": [
     "epos-now-categories-api-openapi.yml",
@@ -19,6 +14,17 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "epos-now-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "epos-now-categories-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "epos-now-customers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "epos-now-devices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "epos-now-products-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "epos-now-stock-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "epos-now-transactions-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
