@@ -134,11 +134,6 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    NotFound:
-      description: The requested resource was not found.
-    Unauthorized:
-      description: Missing or invalid Basic authentication credentials.
   parameters:
     Id:
       name: Id
@@ -155,6 +150,11 @@ components:
       schema:
         type: integer
         default: 1
+  responses:
+    Unauthorized:
+      description: Missing or invalid Basic authentication credentials.
+    NotFound:
+      description: The requested resource was not found.
   schemas:
     Product:
       type: object
