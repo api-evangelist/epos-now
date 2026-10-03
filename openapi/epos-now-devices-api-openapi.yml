@@ -55,6 +55,22 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  schemas:
+    Device:
+      type: object
+      properties:
+        Id:
+          type: integer
+        Name:
+          type: string
+        LocationId:
+          type: integer
+      additionalProperties: true
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+    Unauthorized:
+      description: Missing or invalid Basic authentication credentials.
   parameters:
     Id:
       name: Id
@@ -71,22 +87,6 @@ components:
       schema:
         type: integer
         default: 1
-  responses:
-    Unauthorized:
-      description: Missing or invalid Basic authentication credentials.
-    NotFound:
-      description: The requested resource was not found.
-  schemas:
-    Device:
-      type: object
-      properties:
-        Id:
-          type: integer
-        Name:
-          type: string
-        LocationId:
-          type: integer
-      additionalProperties: true
   securitySchemes:
     basicAuth:
       type: http

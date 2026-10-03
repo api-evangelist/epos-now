@@ -109,6 +109,11 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+    Unauthorized:
+      description: Missing or invalid Basic authentication credentials.
   parameters:
     Id:
       name: Id
@@ -144,11 +149,6 @@ components:
         CustomerTypeId:
           type: integer
       additionalProperties: true
-  responses:
-    Unauthorized:
-      description: Missing or invalid Basic authentication credentials.
-    NotFound:
-      description: The requested resource was not found.
   securitySchemes:
     basicAuth:
       type: http
