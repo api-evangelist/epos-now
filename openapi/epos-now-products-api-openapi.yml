@@ -156,18 +156,11 @@ components:
           type: integer
       additionalProperties: true
   responses:
-    NotFound:
-      description: The requested resource was not found.
     Unauthorized:
       description: Missing or invalid Basic authentication credentials.
+    NotFound:
+      description: The requested resource was not found.
   parameters:
-    Id:
-      name: Id
-      in: path
-      required: true
-      description: The unique identifier of the resource.
-      schema:
-        type: integer
     Page:
       name: page
       in: query
@@ -176,6 +169,13 @@ components:
       schema:
         type: integer
         default: 1
+    Id:
+      name: Id
+      in: path
+      required: true
+      description: The unique identifier of the resource.
+      schema:
+        type: integer
   securitySchemes:
     basicAuth:
       type: http
