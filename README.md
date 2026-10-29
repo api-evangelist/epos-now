@@ -1,4 +1,4 @@
-# Epos Now (epos-now)
+# Epos Now
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,178 +64,128 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Epos Now is a cloud-based point of sale (POS) platform for retail and hospitality businesses, pairing countertop and mobile till hardware with a cloud Back Office for products, inventory, customers, staff, reporting, and payments. The EposNow HQ REST API lets developers programmatically read and write that cloud data - products, categories, transactions (sales), customers, stock, tax rates, and devices - using per-device HTTP Basic authentication, with Webhooks for event notifications.
+Epos Now is a cloud-based point of sale (POS) platform for retail and hospitality businesses, pairing countertop and mobile till hardware with a cloud Back Office for products, inventory, customers, staff, reporting, and payments. The EposNow HQ REST API lets developers programmatically read and write that cloud data - products, categories, transactions (sales), customers, stock, tax rates, and devices - using per-device Basic authentication, with Webhooks for event notifications. API access is enabled per registered API Device from the Back Office and is available through the Epos Now AppStore rather than sold as a standalone metered API product.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/epos-now/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/epos-now/refs/heads/main/apis.yml)
+**Areas:** Point-of-Sale · Retail · Hospitality · Payments · Inventory · Commerce · E-Commerce
 
-## Access Model (Honest Notes)
+## Epos Now on APIs.io
 
-- **Not a standalone metered API.** Epos Now is sold as a commercial per-till POS subscription (optionally bundled with hardware). The REST API is included with a subscription, not billed per call.
-- **Per-device credentials.** API access is enabled per API Device registered under **Web Integrations** in the Epos Now Back Office, and provisioned through the Epos Now AppStore. Each API Device consumes one of the account's device licenses and has its own API Key/Secret pair (regenerable). The access token differs for every registered device.
-- **HTTP Basic auth.** The access token is `Base64("API Key:API Secret")` (key, a colon, secret, no spaces), sent as `Authorization: Basic {token}`.
-- **Proprietary, closed-source SaaS.** There is no open-source or self-hostable server; the API is a hosted cloud service at `https://api.eposnowhq.com`.
-- **V2 vs V4.** This catalog models the documented **V2** surface (`/api/V2`). Epos Now marks V2 as deprecated in favor of a newer **V4 / "Global"** API (`/api/v4`) that reorganizes the same domains; V4 per-resource paths are not fully enumerated in public docs.
-- **Numbers are indicative.** Pricing and rate limits below are drawn from public/third-party sources and vary by region (UK vs US), promotion, and contract; they are flagged unconfirmed until reconciled against a current Epos Now quote.
+Everything profiled for Epos Now is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/epos-now/](https://apis.io/providers/epos-now/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (6)
 
-- Point of Sale
-- POS
-- Retail
-- Hospitality
-- Payments
-- Inventory
-- Commerce
-- Ecommerce
+- [Epos Now Categories API](https://apis.io/apis/epos-now/epos-now-categories-api/) — Categories that group products for the till and reporting.
+- [Epos Now Customers API](https://apis.io/apis/epos-now/epos-now-customers-api/) — Customer records for loyalty, accounts, and CRM.
+- [Epos Now Devices API](https://apis.io/apis/epos-now/epos-now-devices-api/) — Registered tills and API devices on the account.
+- [Epos Now Products API](https://apis.io/apis/epos-now/epos-now-products-api/) — The product catalog sold at the point of sale.
+- [Epos Now Stock API](https://apis.io/apis/epos-now/epos-now-stock-api/) — Product stock levels and stock control.
+- [Epos Now Transactions API](https://apis.io/apis/epos-now/epos-now-transactions-api/) — Sales records (orders) captured at the point of sale.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-07-11
-- **Modified:** 2026-07-11
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Epos Now Products API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-Create, read, update, and delete the product catalog that drives the till - products, prices, barcodes, and their category assignments. Paginated listing at 200 records per page. Core to any point of sale, catalog sync, or retail integration.
+- [Epos Now Agentic Access](https://apis.io/agentic-access/epos-now/epos-now-agentic-access/)
 
-- **Human URL:** [https://developer.eposnowhq.com/Docs/Api?endpoint=Product](https://developer.eposnowhq.com/Docs/Api?endpoint=Product)
-- **Base URL:** `https://api.eposnowhq.com/api/V2`
+#### Collections (7)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- Point of Sale
-- Products
-- Catalog
-- Retail
+- [EposNow HQ REST API](https://apis.io/collections/epos-now/open-epos-now/)
+- [EposNow HQ REST Categories API](https://apis.io/collections/epos-now/open-epos-now-categories-api/)
+- [EposNow HQ REST Categories Customers API](https://apis.io/collections/epos-now/open-epos-now-customers-api/)
+- [EposNow HQ REST Categories Devices API](https://apis.io/collections/epos-now/open-epos-now-devices-api/)
+- [EposNow HQ REST Categories Products API](https://apis.io/collections/epos-now/open-epos-now-products-api/)
+- [EposNow HQ REST Categories Stock API](https://apis.io/collections/epos-now/open-epos-now-stock-api/)
+- [EposNow HQ REST Categories Transactions API](https://apis.io/collections/epos-now/open-epos-now-transactions-api/)
 
-#### Properties
+#### Security (1)
 
-- [Documentation](https://developer.eposnowhq.com/)
-- [API Reference](https://developer.eposnowhq.com/Docs/Api?endpoint=Product)
-- [OpenAPI](openapi/epos-now-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/epos-now.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/epos-now.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Authentication, trust centre, and vulnerability disclosure.
 
-### Epos Now Categories API
+- [Epos Now Authentication](https://apis.io/security/epos-now/epos-now-authentication/)
 
-Manage the product categories used to organize the catalog and the till layout - list, retrieve, create, update, and delete categories that group products for merchandising and reporting.
+#### Plans and pricing (2)
 
-- **Human URL:** [https://developer.eposnowhq.com/Docs/Api?endpoint=Category](https://developer.eposnowhq.com/Docs/Api?endpoint=Category)
-- **Base URL:** `https://api.eposnowhq.com/api/V2`
+Published plans, tiers and prices.
 
-#### Tags
+- [Epos Now Plans Pricing](https://apis.io/plans/epos-now/epos-now-plans-pricing/)
+- [Epos Now Price Estimates](https://apis.io/plans/epos-now/epos-now-price-estimates/)
 
-- Point of Sale
-- Categories
-- Catalog
-- Retail
+#### Rate limits (1)
 
-#### Properties
+Published request limits.
 
-- [API Reference](https://developer.eposnowhq.com/Docs/Api?endpoint=Category)
-- [OpenAPI](openapi/epos-now-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/epos-now.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/epos-now.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Epos Now Rate Limits](https://apis.io/rate-limits/epos-now/epos-now-rate-limits/)
 
-### Epos Now Transactions API
+#### FinOps (1)
 
-Read and write transactions - the sales records (orders) captured at the point of sale, including line items, tenders, discounts, taxes, and refunds. List paginated at 200 per page, retrieve by ID, and post new transactions for integrations and order flows.
+What the API costs to run, by operation.
 
-- **Human URL:** [https://developer.eposnowhq.com/Docs/Api?endpoint=Transaction](https://developer.eposnowhq.com/Docs/Api?endpoint=Transaction)
-- **Base URL:** `https://api.eposnowhq.com/api/V2`
+- [Epos Now Finops](https://apis.io/finops/epos-now/epos-now-finops/)
 
-#### Tags
+## Where to find this API
 
-- Point of Sale
-- Transactions
-- Sales
-- Orders
-- Payments
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-#### Properties
-
-- [API Reference](https://developer.eposnowhq.com/Docs/Api?endpoint=Transaction)
-- [OpenAPI](openapi/epos-now-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/epos-now.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/epos-now.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Epos Now Customers API
-
-Manage the customer records behind loyalty, accounts, and CRM sync - list, retrieve, create, update, and delete customers linked to transactions at the point of sale.
-
-- **Human URL:** [https://developer.eposnowhq.com/Docs/Api?endpoint=Customer](https://developer.eposnowhq.com/Docs/Api?endpoint=Customer)
-- **Base URL:** `https://api.eposnowhq.com/api/V2`
-
-#### Tags
-
-- Point of Sale
-- Customers
-- Loyalty
-- CRM
-
-#### Properties
-
-- [API Reference](https://developer.eposnowhq.com/Docs/Api?endpoint=Customer)
-- [OpenAPI](openapi/epos-now-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/epos-now.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/epos-now.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Epos Now Stock API
-
-Read stock levels per product and manage stock control - product stock, stock transfers between locations, suppliers, and purchase orders - to keep inventory in sync across a retail estate.
-
-- **Human URL:** [https://developer.eposnowhq.com/Docs/StockControlIntroduction](https://developer.eposnowhq.com/Docs/StockControlIntroduction)
-- **Base URL:** `https://api.eposnowhq.com/api/V2`
-
-#### Tags
-
-- Point of Sale
-- Stock
-- Inventory
-- Retail
-
-#### Properties
-
-- [Documentation](https://developer.eposnowhq.com/Docs/StockControlIntroduction)
-- [API Reference](https://developer.eposnowhq.com/Docs/Api?endpoint=ProductStock)
-- [OpenAPI](openapi/epos-now-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/epos-now.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/epos-now.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Epos Now Devices and Webhooks API
-
-List the registered tills and API devices on the account, and react to changes in near real time with Webhooks. Webhooks POST an HTTP notification to your endpoint whenever a relevant object changes, carrying `Epos-Object` and `Epos-Action` headers describing what happened.
-
-- **Human URL:** [https://developer.eposnowhq.com/Docs/Webhooks](https://developer.eposnowhq.com/Docs/Webhooks)
-- **Base URL:** `https://api.eposnowhq.com/api/V2`
-
-#### Tags
-
-- Point of Sale
-- Devices
-- Webhooks
-- Events
-
-#### Properties
-
-- [Documentation](https://developer.eposnowhq.com/Docs/Webhooks)
-- [API Reference](https://developer.eposnowhq.com/Docs/Api?endpoint=Device)
-- [OpenAPI](openapi/epos-now-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/epos-now.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/epos-now.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [Authentication](authentication/epos-now-authentication.yml)
-- [LinkedIn](https://www.linkedin.com/company/epos-now)
 - [Website](https://www.eposnow.com/)
 - [Documentation](https://developer.eposnowhq.com/)
-- [Plans](plans/epos-now-plans-pricing.yml)
-- [Rate Limits](rate-limits/epos-now-rate-limits.yml)
-- [Fin Ops](finops/epos-now-finops.yml)
+- [Pricing](https://www.eposnow.com/us/pricing/)
+- [Blog](https://www.eposnow.com/us/news/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 32.5** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 51.2 |
+| Contract governance | 0.0 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 32.1 |
+| Access clarity | 42.1 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 5.4** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/epos-now/](https://apis.io/providers/epos-now/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Epos Now: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/epos-now/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
